@@ -4,30 +4,11 @@ from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.naive_bayes import MultinomialNB
 from sklearn.metrics import accuracy_score, classification_report
 import matplotlib.pyplot as plt
-import seaborn as sns
 
 url = "https://raw.githubusercontent.com/justmarkham/pycon-2016-tutorial/master/data/sms.tsv"
 df = pd.read_csv(url, sep='\t', header=None, names=['label', 'message'])
 
 df['label'] = df['label'].map({'ham': 0, 'spam': 1})
-
-# plt.figure(figsize=(6, 4))
-# sns.countplot(x='label', data=df, palette='cool')
-# plt.title("Proportions of ham and spam messages")
-# plt.xticks([0, 1], ['Ham', 'Spam'])
-# plt.ylabel('Number of messages')
-# plt.xlabel('Label')
-# plt.show()
-# 
-# df['message_length'] = df['message'].apply(len)
-# 
-# plt.figure(figsize=(10, 6))
-# sns.histplot(data=df, x='message_length', hue='label', bins=50, kde=True, palette='cool', alpha=0.7)
-# plt.title("Message length distribution for Ham and Spam")
-# plt.xlabel('Message length')
-# plt.ylabel('Number of messages')
-# plt.legend(['Ham', 'Spam'])
-# plt.show()
 
 X = df['message']
 y = df['label']
